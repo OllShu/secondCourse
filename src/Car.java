@@ -17,8 +17,9 @@ public class Car {
 
   private static String checkParameters (String parameter) {
     
-    if (parameter == null || parameter.isEmpty())
+    if (parameter == null || parameter.isEmpty()) {
       parameter = "default";
+    }
       return parameter;
   }
   private static int checkYear (int parameter) {
