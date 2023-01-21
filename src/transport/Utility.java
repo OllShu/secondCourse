@@ -20,23 +20,22 @@ public class Utility {
         return parameter;
     }
     public static String settingTheSeason (String month) {
-        String season;
-        checkingTheCorrectnessOfMonth(month);
+        String season="";
         if (month == "декабрь" || month == "январь" || month == "февраль") season="зима";
-        else season="лето";
+        else if (month == "март" || month == "апрель" || month == "май" || month == "июнь" || month == "июль"
+                || month == "август" || month == "август" || month == "сентябрь" || month == "октябрь"
+                || month == "ноябрь") season="лето";
+        else System.out.println("Месяц введен неверно");
         return season;
     }
-    public static String checkingTheCorrectnessOfMonth (String month) {
-        String[] monthOfYear = {"январь", "февраль", "март", "апрель", "май", "июнь", "июль", "август",
-                "сентябрь", "октябрь", "ноябрь", "декабрь"};
-        for (int i=0; i<monthOfYear.length; i++) {
-            if (month!=monthOfYear[i]) System.out.println("Месяц введен неверно");
+
+    public static void changeTiresForSeasons (String month, boolean winterTires){
+        String value = settingTheSeason(month);
+        if (value=="лето" && winterTires==true)
+            System.out.println("Вам нужно сменить шины на сезонные - летние");
+        else if (value=="зима" && winterTires==false) {
+            System.out.println("Вам нужно сменить шины на сезонные - зимние");
         }
-        return month;
-    }
-
-    public static void changeTiresForSeasons (boolean value){
-
     }
 
 

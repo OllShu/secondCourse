@@ -1,7 +1,8 @@
 package transport;
-import transport.Car;
+import transport.Car.*;
 public class Main {
     public static void main(String[] args) {
+        String month="январь";
         Car[] cars = new Car[5];
         cars[0] = new Car("Lada", "Granta", 1.7, "желтый", 2015,
                 "Россия", "механика", "хэтчбек", "А111АА999",
@@ -20,9 +21,8 @@ public class Main {
                 5, false);
         for (Car car : cars) {
             System.out.println(car);
+            Utility.changeTiresForSeasons(month, car.isWinterTires());
         }
-        String month;
-
     }
 }
 
