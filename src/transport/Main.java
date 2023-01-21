@@ -1,5 +1,4 @@
 package transport;
-
 import transport.Car;
 public class Main {
     public static void main(String[] args) {
@@ -15,13 +14,15 @@ public class Main {
                 true);
         cars[3] = new Car("Kia", "Sportage 4-го поколения", 2.4, "красный",
                 2018, "Южная Корея", "механика", "кроссовер",
-                "К444КК999", 5, true);
+                "К444КК999", 5, false);
         cars[4] = new Car("Hyundai", "Avante", 1.6, "оранжевый", 2016,
                 "Южная Корея", "автомат", "седан", "Н555Н999",
-                5, true);
+                5, false);
         for (Car car : cars) {
             System.out.println(car);
         }
+        String month;
+
     }
 }
 

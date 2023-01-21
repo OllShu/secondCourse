@@ -33,8 +33,8 @@ public class Car {
     this.transmission = Utility.checkParameters(transmission);
     this.bodyType = Utility.checkParameters(bodyType);
     this.registrationNumber = Utility.checkParameters(registrationNumber);
-    this.numberOfSeats = numberOfSeats;
-    this.winterTires = true;
+    this.numberOfSeats = Utility.checkNumberOfSeats(numberOfSeats);
+    this.winterTires = winterTires;
     }
 
   public String getBrand() {
@@ -103,7 +103,12 @@ public class Car {
 
   @Override
   public String toString() {
+   String tires;
+    if (winterTires==true) tires = "зимняя";
+    else tires = "летняя";
     return brand+" "+ model+" год выпуска  " + year + ", цвет "+color+ ", объем двигателя "+ engineVolume +
-            ", страна сборки "+ country;
+            ", страна сборки "+ country+ ", коробка передач - "+transmission +", тип кузова - "+ bodyType +
+            ", регистрационный номер - " + registrationNumber + ", количество мест - "+ numberOfSeats +
+            ", " +tires + " резина";
   }
 }
