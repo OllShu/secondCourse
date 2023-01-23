@@ -34,10 +34,10 @@ public class Car {
     this.country = Utility.checkParameters(country);
     this.transmission = Utility.checkParameters(transmission);
     this.bodyType = Utility.checkParameters(bodyType);
-    this.registrationNumber = Utility.checkRegistrationNumber(registrationNumber);
+    this.registrationNumber = Utility.checkParameters(registrationNumber);
     this.numberOfSeats = Utility.checkNumberOfSeats(numberOfSeats);
     this.winterTires = winterTires;
-    this.key = new Key(boolean remoteEngineStart, boolean keylessAccess);
+    setKey(key);
   }
   public String getBrand() {
     return brand;
@@ -48,6 +48,7 @@ public class Car {
   }
 
   public void setEngineVolume(double engineVolume) {
+    Utility.checkEngineVolume(engineVolume);
     this.engineVolume = engineVolume;
   }
 
@@ -60,6 +61,7 @@ public class Car {
   }
 
   public void setColor(String color) {
+    Utility.checkParameters(color);
     this.color = color;
   }
 
@@ -76,6 +78,7 @@ public class Car {
   }
 
   public void setTransmission(String transmission) {
+    Utility.checkParameters(transmission);
     this.transmission = transmission;
   }
 
@@ -88,6 +91,7 @@ public class Car {
   }
 
   public void setRegistrationNumber(String registrationNumber) {
+    Utility.checkRegistrationNumber(registrationNumber);
     this.registrationNumber = registrationNumber;
   }
 
@@ -103,6 +107,17 @@ public class Car {
     this.winterTires = winterTires;
   }
 
+  public Key getKey() {
+    return key;
+  }
+
+  public void setKey(Key key) {
+    if (key==null) {
+      key = new Key(false,false);
+    }
+    this.key = key;
+  }
+
   @Override
   public String toString() {
    String tires;
@@ -111,7 +126,8 @@ public class Car {
     return brand+" "+ model+" год выпуска  " + year + ", цвет "+color+ ", объем двигателя "+ engineVolume +
             ", страна сборки "+ country+ ", коробка передач - "+transmission +", тип кузова - "+ bodyType +
             ", регистрационный номер - " + registrationNumber + ", количество мест - "+ numberOfSeats +
-            ", " +tires + " резина";
+            ", " +tires + " резина" +", "+ key;
+
   }
   public static class Key {
     private final boolean remoteEngineStart;
@@ -120,6 +136,20 @@ public class Car {
     public Key (boolean remoteEngineStart, boolean keylessAccess){
       this.remoteEngineStart = remoteEngineStart;
       this.keylessAccess = keylessAccess;
+    }
+
+    public boolean isRemoteEngineStart() {
+      return remoteEngineStart;
+    }
+
+    public boolean isKeylessAccess() {
+      return keylessAccess;
+    }
+
+    @Override
+    public String toString() {
+      return (remoteEngineStart? "удаленный запуск двигателя":"без удаленного запуска двигателя")+", "+
+              (keylessAccess? "бесключевой доступ":"бесключевого доступа нет");
     }
   }
 

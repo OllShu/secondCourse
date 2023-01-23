@@ -21,13 +21,15 @@ public class Utility {
         if (parameter < 3 || parameter>10) parameter = 3;
         return parameter;
     }
-    public static String checkRegistrationNumber (String parameter) {
+     public static String checkRegistrationNumber (String parameter) {
         checkParameters(parameter);
+
         if (Pattern.matches("[а-яА-Я]{1}[0-9]{3}[а-яА-Я]{3}", parameter)) {
             return parameter;
         } else
             System.out.println("Номер некорректный");
             return "номер некорректный";
+
     }
 
     public static String settingTheSeason (String month) {
