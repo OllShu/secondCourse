@@ -21,6 +21,11 @@ public class Utility {
         if (parameter < 3 || parameter>10) parameter = 3;
         return parameter;
     }
+
+    // здесь пыталась сделать проверку рег.номера на корректность,
+    // запуталась с регулярными выражениями
+    // в итоге у меня все считает некорректным
+
      public static String checkRegistrationNumber (String parameter) {
         checkParameters(parameter);
 
