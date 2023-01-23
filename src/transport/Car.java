@@ -12,6 +12,7 @@ public class Car {
   private String registrationNumber;
   private final int numberOfSeats;
   private boolean winterTires;
+  private Key key;
 
   public Car(String brand,
              String model,
@@ -23,7 +24,8 @@ public class Car {
              String bodyType,
              String registrationNumber,
              int numberOfSeats,
-             boolean winterTires) {
+             boolean winterTires,
+             Key key) {
     this.brand = Utility.checkParameters(brand);
     this.model = Utility.checkParameters(model);
     this.engineVolume = Utility.checkEngineVolume(engineVolume);
@@ -32,11 +34,11 @@ public class Car {
     this.country = Utility.checkParameters(country);
     this.transmission = Utility.checkParameters(transmission);
     this.bodyType = Utility.checkParameters(bodyType);
-    this.registrationNumber = Utility.checkParameters(registrationNumber);
+    this.registrationNumber = Utility.checkRegistrationNumber(registrationNumber);
     this.numberOfSeats = Utility.checkNumberOfSeats(numberOfSeats);
     this.winterTires = winterTires;
-    }
-
+    this.key = new Key(boolean remoteEngineStart, boolean keylessAccess);
+  }
   public String getBrand() {
     return brand;
   }
@@ -111,4 +113,14 @@ public class Car {
             ", регистрационный номер - " + registrationNumber + ", количество мест - "+ numberOfSeats +
             ", " +tires + " резина";
   }
+  public static class Key {
+    private final boolean remoteEngineStart;
+    private final boolean keylessAccess;
+
+    public Key (boolean remoteEngineStart, boolean keylessAccess){
+      this.remoteEngineStart = remoteEngineStart;
+      this.keylessAccess = keylessAccess;
+    }
+  }
+
 }

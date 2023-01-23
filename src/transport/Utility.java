@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.regex.Pattern;
+
 public class Utility {
     public static String checkParameters (String parameter) {
         if (parameter == null || parameter.isBlank()) parameter = "default";
@@ -19,6 +21,15 @@ public class Utility {
         if (parameter < 3 || parameter>10) parameter = 3;
         return parameter;
     }
+    public static String checkRegistrationNumber (String parameter) {
+        checkParameters(parameter);
+        if (Pattern.matches("[а-яА-Я]{1}[0-9]{3}[а-яА-Я]{3}", parameter)) {
+            return parameter;
+        } else
+            System.out.println("Номер некорректный");
+            return "номер некорректный";
+    }
+
     public static String settingTheSeason (String month) {
         String season="";
         if (month == "декабрь" || month == "январь" || month == "февраль") season="зима";
