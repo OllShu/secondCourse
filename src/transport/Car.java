@@ -90,7 +90,7 @@ public class Car extends Transport {
    String tires;
     if (winterTires==true) tires = "зимняя";
     else tires = "летняя";
-    return super.getBrand()+" "+ super.getModel()+" год выпуска  " + super.getYear() +
+    return super.getBrand()+" "+ super.getModel()+" - год выпуска  " + super.getYear() +
             ", цвет "+super.getColor()+ ", объем двигателя "+ engineVolume +", страна сборки "+
             super.getCountry()+", максимальная скорость "+super.getMaxSpeed()+ ", коробка передач - "+
             transmission +", тип кузова - "+ bodyType + ", регистрационный номер - " +

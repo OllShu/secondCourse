@@ -23,6 +23,15 @@ public class Main {
             System.out.println(car);
             Utility.changeTiresForSeasons(month, car.isWinterTires());
         }
+
+        Bus[] buses = new Bus[3];
+        buses[0] = new Bus("ПАЗ", "4234", 2001, "Россия", "белый", 95,
+                "городской автобус среднего класса");
+        buses[1] = new Bus("Neoplan", "Skyliner", 2001, "Бельгия", "белый", 120,
+                "туристический автобус");
+        buses[2] = new Bus("Volvo","B10M", 2003, "Швеция", "серый", 130,
+                "междугородный автобус");
+        for (Bus bus : buses) System.out.println(bus);
     }
 }
 
