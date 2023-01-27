@@ -1,12 +1,7 @@
 package transport;
 import transport.Utility.*;
-public class Car {
-  private final String brand;
-  private final String model;
+public class Car extends Transport {
   private double engineVolume;
-  private String color;
-  private final int year;
-  private final String country;
   private String transmission;
   private final String bodyType;
   private String registrationNumber;
@@ -16,22 +11,19 @@ public class Car {
 
   public Car(String brand,
              String model,
-             double engineVolume,
-             String color,
              int year,
              String country,
+             String color,
+             int maxSpeed,
+             double engineVolume,
              String transmission,
              String bodyType,
              String registrationNumber,
              int numberOfSeats,
              boolean winterTires,
              Key key) {
-    this.brand = Utility.checkParameters(brand);
-    this.model = Utility.checkParameters(model);
+    super(brand, model, year, country, color, maxSpeed);
     this.engineVolume = Utility.checkEngineVolume(engineVolume);
-    this.color = Utility.checkParameters(color);
-    this.year = Utility.checkYear(year);
-    this.country = Utility.checkParameters(country);
     this.transmission = Utility.checkParameters(transmission);
     this.bodyType = Utility.checkParameters(bodyType);
     this.registrationNumber = Utility.checkParameters(registrationNumber);
@@ -39,10 +31,6 @@ public class Car {
     this.winterTires = winterTires;
     setKey(key);
   }
-  public String getBrand() {
-    return brand;
-  }
-
   public double getEngineVolume() {
     return engineVolume;
   }
@@ -50,27 +38,6 @@ public class Car {
   public void setEngineVolume(double engineVolume) {
     Utility.checkEngineVolume(engineVolume);
     this.engineVolume = engineVolume;
-  }
-
-  public String getModel() {
-    return model;
-  }
-
-  public String getColor() {
-    return color;
-  }
-
-  public void setColor(String color) {
-    Utility.checkParameters(color);
-    this.color = color;
-  }
-
-  public int getYear() {
-    return year;
-  }
-
-  public String getCountry() {
-    return country;
   }
 
   public String getTransmission() {
@@ -123,10 +90,12 @@ public class Car {
    String tires;
     if (winterTires==true) tires = "зимняя";
     else tires = "летняя";
-    return brand+" "+ model+" год выпуска  " + year + ", цвет "+color+ ", объем двигателя "+ engineVolume +
-            ", страна сборки "+ country+ ", коробка передач - "+transmission +", тип кузова - "+ bodyType +
-            ", регистрационный номер - " + registrationNumber + ", количество мест - "+ numberOfSeats +
-            ", " +tires + " резина" +", "+ key;
+    return super.getBrand()+" "+ super.getModel()+" год выпуска  " + super.getYear() +
+            ", цвет "+super.getColor()+ ", объем двигателя "+ engineVolume +", страна сборки "+
+            super.getCountry()+", максимальная скорость "+super.getMaxSpeed()+ ", коробка передач - "+
+            transmission +", тип кузова - "+ bodyType + ", регистрационный номер - " +
+            registrationNumber + ", количество мест - "+ numberOfSeats + ", " +tires +
+            " резина" +", "+ key;
 
   }
   public static class Key {

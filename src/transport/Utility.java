@@ -56,5 +56,13 @@ public class Utility {
         }
     }
 
+    public static int checkMaxSpeed (int parameter) {
+        if (parameter < 0 || parameter > 1000) {
+            System.out.println("Значение максимальной скорости некорректно");
+            parameter = 0;
+        }
+        else parameter = parameter;
+        return parameter;
+    }
 
 }
