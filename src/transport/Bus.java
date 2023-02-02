@@ -1,30 +1,29 @@
 package transport;
 
-public class Bus extends Transport {
-    private String someParameter;
-    public Bus (String brand,
-                String model,
-                int year,
-                String country,
-                String color,
-                int maxSpeed,
-                String someParameter) {
-    super(brand, model, year, country, color, maxSpeed);
-    this.someParameter = Utility.checkParameters(someParameter);
-    }
+import transport.Utility.*;
 
-    public String getSomeParameter() {
-        return someParameter;
-    }
-
-    public void setSomeParameter(String someParameter) {
-        this.someParameter = someParameter;
+public class Bus extends Transport<DriverWithLicenseD> {
+    public Bus(String brand,
+               String model,
+               double engineVolume,
+               DriverWithLicenseD driverWithLicenseD) {
+        super(brand, model, engineVolume, driverWithLicenseD);
     }
 
     @Override
     public String toString() {
-        return super.getBrand()+" "+ super.getModel()+" - год выпуска  " + super.getYear() +
-                ", цвет "+super.getColor()+ ", страна сборки "+ super.getCountry() +
-                ", максимальная скорость "+super.getMaxSpeed()+", "+someParameter;
+        return super.getBrand()+" "+super.getModel()+" - объем двигателя "+super.getEngineVolume()+"л";
+    }
+    @Override
+    public void pitStop() {
+        System.out.println("Автобус "+super.getBrand()+" "+super.getModel()+" на пит-стопе");
+    }
+    @Override
+    public void bestLapTime() {
+        System.out.println("Лучшее время автобуса "+super.getBrand()+" "+super.getModel()+" 25 минут");
+    }
+    @Override
+    public void maximumSpeed() {
+        System.out.println("Максимальная скорость автобуса "+super.getBrand()+" "+super.getModel()+" 109 км/ч");
     }
 }

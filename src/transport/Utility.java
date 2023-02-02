@@ -13,6 +13,11 @@ public class Utility {
         return parameter;
     }
 
+    public static int checkexperience (int parameter) {
+        if (parameter <= 0) parameter = 0;
+        return parameter;
+    }
+
     public static double checkEngineVolume(double parameter) {
         if (parameter <= 0) parameter = 1.5;
         return parameter;

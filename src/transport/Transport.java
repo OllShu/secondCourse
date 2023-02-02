@@ -1,25 +1,22 @@
 package transport;
 
-public class Transport {
+import transport.Utility.*;
+import transport.Driver.*;
+
+public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
-    private final int year;
-    private final String country;
-    private String color;
-    private int maxSpeed;
+    private double engineVolume;
+    private Driver T;
 
     public Transport (String brand,
                       String model,
-                      int year,
-                      String country,
-                      String color,
-                      int maxSpeed) {
+                      double engineVolume,
+                      Driver T) {
         this.brand = Utility.checkParameters(brand);
         this.model = Utility.checkParameters(model);
-        this.year = Utility.checkYear(year);
-        this.country = Utility.checkParameters(country);
-        this.color = Utility.checkParameters(color);
-        this.maxSpeed = Utility.checkMaxSpeed(maxSpeed);
+        this.engineVolume = Utility.checkEngineVolume(engineVolume);
+        this.T = T;
     }
 
     public String getBrand() {
@@ -30,29 +27,29 @@ public class Transport {
         return model;
     }
 
-    public int getYear() {
-        return year;
+    public double getEngineVolume() {
+        return engineVolume;
     }
 
-    public String getCountry() {
-        return country;
+    public void setEngineVolume(double engineVolume) {
+        this.engineVolume = engineVolume;
     }
 
-    public String getColor() {
-        return color;
+    public Driver getT() {
+        return T;
     }
 
-    public void setColor(String color) {
-        Utility.checkParameters(color);
-        this.color = color;
+    public void setT(Driver t) {
+        T = t;
     }
 
-    public int getMaxSpeed() {
-        return maxSpeed;
+    public void startMoving() {
+        System.out.println("Авто "+brand+" "+model+" начал движение"); }
+
+    public void finishTheMovement() {
+        System.out.println("Авто "+brand+" "+model+" закончил движение");
     }
 
-    public void setMaxSpeed(int maxSpeed) {
-        Utility.checkMaxSpeed(maxSpeed);
-        this.maxSpeed = maxSpeed;
-    }
+
+
 }
