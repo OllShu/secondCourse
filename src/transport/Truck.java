@@ -3,11 +3,22 @@ package transport;
 import transport.Utility.*;
 
 public class Truck extends Transport<DriverWithLicenseC> {
+    private TruckCapacity truckCapacity;
     public Truck(String brand,
                  String model,
                  double engineVolume,
-                 DriverWithLicenseC driverWithLicenseC) {
+                 DriverWithLicenseC driverWithLicenseC,
+                 TruckCapacity truckCapacity) {
         super(brand, model, engineVolume, driverWithLicenseC);
+        this.truckCapacity = truckCapacity;
+    }
+
+    public TruckCapacity getTruckCapacity() {
+        return truckCapacity;
+    }
+
+    public void setTruckCapacity(TruckCapacity truckCapacity) {
+        this.truckCapacity = truckCapacity;
     }
 
     @Override
@@ -25,5 +36,10 @@ public class Truck extends Transport<DriverWithLicenseC> {
     @Override
     public void maximumSpeed() {
         System.out.println("Максимальная скорость грузовика "+super.getBrand()+" "+super.getModel()+" 127 км/ч");
+    }
+    @Override
+    public void printType(){
+        if (truckCapacity!=null) System.out.println("Тип транспортного средства "+truckCapacity);
+        else System.out.println("Данных по транспортному средству недостаточно");
     }
 }

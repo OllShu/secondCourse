@@ -50,6 +50,7 @@ public abstract class Transport<T extends Driver> implements Competing {
         System.out.println("Авто "+brand+" "+model+" закончил движение");
     }
 
-
+    public void printType(){
+       }
 
 }

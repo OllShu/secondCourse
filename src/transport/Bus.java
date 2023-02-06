@@ -3,11 +3,22 @@ package transport;
 import transport.Utility.*;
 
 public class Bus extends Transport<DriverWithLicenseD> {
+    private BusCapacity busCapacity;
     public Bus(String brand,
                String model,
                double engineVolume,
-               DriverWithLicenseD driverWithLicenseD) {
+               DriverWithLicenseD driverWithLicenseD,
+               BusCapacity busCapacity) {
         super(brand, model, engineVolume, driverWithLicenseD);
+        this.busCapacity = busCapacity;
+    }
+
+    public BusCapacity getBusCapacity() {
+        return busCapacity;
+    }
+
+    public void setBusCapacity(BusCapacity busCapacity) {
+        this.busCapacity = busCapacity;
     }
 
     @Override
@@ -25,5 +36,10 @@ public class Bus extends Transport<DriverWithLicenseD> {
     @Override
     public void maximumSpeed() {
         System.out.println("Максимальная скорость автобуса "+super.getBrand()+" "+super.getModel()+" 109 км/ч");
+    }
+    @Override
+    public void printType(){
+        if (busCapacity!=null) System.out.println("Тип транспортного средства "+busCapacity);
+        else System.out.println("Данных по транспортному средству недостаточно");
     }
 }
