@@ -46,4 +46,8 @@ public class Car extends Transport<DriverWithLicenseB> {
       else System.out.println("Данных по транспортному средству недостаточно");
   }
 
+  @Override
+  public void passDiagnostics() {
+    System.out.println("Автомобиль "+getBrand()+" "+getModel()+" проходит диагностику");
+  }
 }

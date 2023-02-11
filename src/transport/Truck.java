@@ -42,4 +42,9 @@ public class Truck extends Transport<DriverWithLicenseC> {
         if (truckCapacity!=null) System.out.println("Тип транспортного средства "+truckCapacity);
         else System.out.println("Данных по транспортному средству недостаточно");
     }
+
+    @Override
+    public void passDiagnostics() {
+        System.out.println("Грузовик "+getBrand()+" "+getModel()+" проходит диагностику");
+    }
 }

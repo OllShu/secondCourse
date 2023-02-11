@@ -1,5 +1,6 @@
 package transport;
 import transport.Transport.*;
+import transport.Car.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,13 +13,14 @@ public class Main {
 
         Car[] cars = new Car[4];
         cars[0] = new Car("Lada", "Granta", 1.6, driverWithLicenseBS[0], CarBodyType.sedan);
-        cars[1] = new Car("Audi", "A8 50 L TDI quattro", 3.0,driverWithLicenseBS[1], CarBodyType.sedan);
+        cars[1] = new Car("Audi", "A8 50 L TDI quattro", 3.0, driverWithLicenseBS[1], CarBodyType.sedan);
         cars[2] = new Car("BMW", "Z8", 3.0, driverWithLicenseBS[2], CarBodyType.sedan);
         cars[3] = new Car("Kia", "Sportage 4-го поколения", 2.0, driverWithLicenseBS[3], CarBodyType.crossover);
 
         for (Car car : cars) {
-            System.out.println(car);
+            System.out.println(cars);
             outputInfo(car.getT().getFIO(), car.getBrand());
+    //        Car.passDiagnostics(cars);
         }
 
         DriverWithLicenseD[] driverWithLicenseDS = new DriverWithLicenseD[4];
@@ -28,10 +30,10 @@ public class Main {
         driverWithLicenseDS[3] = new DriverWithLicenseD("Воробьев СС", true, 18, true);
 
         Bus[] buses = new Bus[4];
-        buses[0] = new Bus("ПАЗ", "4234", 4.4, driverWithLicenseDS[0], BusCapacity.small);
+        buses[0] = new Bus("ПАЗ", "4234", 4.4, driverWithLicenseDS[0], BusCapacity.extraSmall);
         buses[1] = new Bus("Neoplan", "Skyliner", 10.5, driverWithLicenseDS[1], BusCapacity.extraLarge);
-        buses[2] = new Bus("Volvo","B10M", 14.9, driverWithLicenseDS[2], BusCapacity.large);
-        buses[3] = new Bus("Mercedes-Benz","O405G", 11.9, driverWithLicenseDS[3], BusCapacity.large);
+        buses[2] = new Bus("Volvo", "B10M", 14.9, driverWithLicenseDS[2], BusCapacity.large);
+        buses[3] = new Bus("Mercedes-Benz", "O405G", 11.9, driverWithLicenseDS[3], BusCapacity.large);
 
         for (Bus bus : buses) {
             System.out.println(bus);
@@ -55,10 +57,12 @@ public class Main {
             outputInfo(truck.getT().getFIO(), truck.getBrand());
         }
     }
-    public static void outputInfo (String name, String brend) {
-        System.out.println("Водитель "+name+" управляет автомобилем "+brend+" и будет участвовать в заезде");
-    }
 
+    public static void outputInfo(String name, String brand) {
+        System.out.println("Водитель " + name + " управляет автомобилем " + brand + " и будет участвовать в заезде");
+    }
 }
+
+
 
 

@@ -5,7 +5,7 @@ public enum BusCapacity {
     small(10, 25),
     medium(40, 50),
     large(60, 80),
-    extraLarge(100, 120);
+    extraLarge(100, null);
     private Integer minCapacity;
     private Integer maxCapacity;
 
@@ -16,6 +16,10 @@ public enum BusCapacity {
 
     @Override
     public String toString() {
-        return "Вместимость автобуса " + minCapacity + "-" + maxCapacity + " человек";
+        if (minCapacity != null && maxCapacity != null)
+            return "Вместимость автобуса " + minCapacity + "-" + maxCapacity + " человек.";
+        else if (maxCapacity != null) return "Вместимость автобуса до " + maxCapacity + " человек.";
+            else if(minCapacity!=null) return "Вместимость автобуса свыше " + minCapacity + " человек.";
+                else return "Ляляля";
     }
 }

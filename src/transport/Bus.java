@@ -23,7 +23,7 @@ public class Bus extends Transport<DriverWithLicenseD> {
 
     @Override
     public String toString() {
-        return super.getBrand()+" "+super.getModel()+" - объем двигателя "+super.getEngineVolume()+"л";
+        return super.getBrand()+" "+super.getModel()+" - объем двигателя "+super.getEngineVolume()+"л. "+busCapacity;
     }
     @Override
     public void pitStop() {
@@ -42,4 +42,5 @@ public class Bus extends Transport<DriverWithLicenseD> {
         if (busCapacity!=null) System.out.println("Тип транспортного средства "+busCapacity);
         else System.out.println("Данных по транспортному средству недостаточно");
     }
+
 }

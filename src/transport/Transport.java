@@ -53,4 +53,20 @@ public abstract class Transport<T extends Driver> implements Competing {
     public void printType(){
        }
 
+    public void passDiagnostics() {
+        if (findNotBus()) {
+            System.out.println("Транспорт проходит диагностику");
+        } else {
+            try {
+                throw new TransportTypeException("Автобусы не должны проходить диагностику");
+            } catch (TransportTypeException e) {
+                System.out.println("исключение: ");
+            }
+        }
+    }
+    public boolean findNotBus() {
+        boolean notBus;
+        notBus = Transport.this.getClass() != Bus.class;
+        return notBus;
+    }
 }
