@@ -60,7 +60,7 @@ public abstract class Transport<T extends Driver> implements Competing {
             try {
                 throw new TransportTypeException("Автобусы не должны проходить диагностику");
             } catch (TransportTypeException e) {
-                System.out.println("исключение: ");
+                System.out.println("исключение: Автобусы не должны проходить диагностику");
             }
         }
     }

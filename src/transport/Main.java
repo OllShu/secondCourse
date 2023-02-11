@@ -1,6 +1,5 @@
 package transport;
 import transport.Transport.*;
-import transport.Car.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,7 +19,7 @@ public class Main {
         for (Car car : cars) {
             System.out.println(cars);
             outputInfo(car.getT().getFIO(), car.getBrand());
-    //        Car.passDiagnostics(cars);
+            car.passDiagnostics();
         }
 
         DriverWithLicenseD[] driverWithLicenseDS = new DriverWithLicenseD[4];
@@ -38,6 +37,7 @@ public class Main {
         for (Bus bus : buses) {
             System.out.println(bus);
             outputInfo(bus.getT().getFIO(), bus.getBrand());
+            bus.passDiagnostics();
         }
 
         DriverWithLicenseC[] driverWithLicenseCS = new DriverWithLicenseC[4];
@@ -55,6 +55,7 @@ public class Main {
         for (Truck truck : trucks) {
             System.out.println(truck);
             outputInfo(truck.getT().getFIO(), truck.getBrand());
+            truck.passDiagnostics();
         }
     }
 
