@@ -3,20 +3,28 @@ package transport;
 import transport.Utility.*;
 import transport.Driver.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private double engineVolume;
     private Driver T;
+    private List<Mechanic> mechanicList;
+
+
 
     public Transport (String brand,
                       String model,
                       double engineVolume,
-                      Driver T) {
+                      Driver T,
+                      List<Mechanic> mechanicList) {
         this.brand = Utility.checkParameters(brand);
         this.model = Utility.checkParameters(model);
         this.engineVolume = Utility.checkEngineVolume(engineVolume);
         this.T = T;
+        this.mechanicList = mechanicList;
     }
 
     public String getBrand() {
@@ -43,6 +51,14 @@ public abstract class Transport<T extends Driver> implements Competing {
         T = t;
     }
 
+    public List<Mechanic> getMechanicList() {
+        return mechanicList;
+    }
+
+    public void setMechanicList(List<Mechanic> mechanicList) {
+        this.mechanicList = mechanicList;
+    }
+
     public void startMoving() {
         System.out.println("Авто "+brand+" "+model+" начал движение"); }
 
@@ -54,7 +70,7 @@ public abstract class Transport<T extends Driver> implements Competing {
        }
 
     public void passDiagnostics() {
-        if (findNotBus()) {
+        if (isNotBus()) {
             System.out.println("Транспорт проходит диагностику");
         } else {
             try {
@@ -64,7 +80,7 @@ public abstract class Transport<T extends Driver> implements Competing {
             }
         }
     }
-    public boolean findNotBus() {
+    public boolean isNotBus() {
         boolean notBus;
         notBus = Transport.this.getClass() != Bus.class;
         return notBus;

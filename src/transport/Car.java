@@ -4,6 +4,10 @@ import transport.Utility.*;
 import transport.Driver.*;
 import transport.DriverWithLicenseB.*;
 import transport.CarBodyType.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Car extends Transport<DriverWithLicenseB> {
   private CarBodyType carBodyType;
 
@@ -11,8 +15,9 @@ public class Car extends Transport<DriverWithLicenseB> {
              String model,
              double engineVolume,
              Driver T,
+             List<Mechanic> mechanicList,
              CarBodyType carBodyType) {
-    super(brand, model, engineVolume, T);
+    super(brand, model, engineVolume, T, mechanicList);
     this.carBodyType = carBodyType;
   }
 

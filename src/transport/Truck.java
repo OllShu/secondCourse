@@ -2,14 +2,17 @@ package transport;
 
 import transport.Utility.*;
 
+import java.util.List;
+
 public class Truck extends Transport<DriverWithLicenseC> {
     private TruckCapacity truckCapacity;
     public Truck(String brand,
                  String model,
                  double engineVolume,
-                 DriverWithLicenseC driverWithLicenseC,
+                 Driver T,
+                 List<Mechanic> mechanicList,
                  TruckCapacity truckCapacity) {
-        super(brand, model, engineVolume, driverWithLicenseC);
+        super(brand, model, engineVolume, T, mechanicList);
         this.truckCapacity = truckCapacity;
     }
 
