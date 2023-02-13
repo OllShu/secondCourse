@@ -32,9 +32,9 @@ public class Mechanic {
     }
 
     public <T extends Transport> void performMaintenance(T t) {
-        System.out.println("Автобусы не проходят тех.обслуживание");
+        System.out.println("Механик "+this+" проводит тех.обслуживание авто "+ t.toString());
     }
     public <T extends Transport> void fixTheCar(T t) {
-        System.out.println("Механик "+this+" ремонтирует машину "+ toString().toString());
+        System.out.println("Механик "+this+" ремонтирует авто "+ t.toString());
     }
 }

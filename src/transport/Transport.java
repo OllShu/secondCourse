@@ -5,6 +5,8 @@ import transport.Driver.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
@@ -85,4 +87,8 @@ public abstract class Transport<T extends Driver> implements Competing {
         notBus = Transport.this.getClass() != Bus.class;
         return notBus;
     }
+    public <T extends Transport<Driver>> void findDriverAndMechanics (T t) {
+        System.out.println(brand+" "+model + " - водитель " + t.getT().getFIO() + ", механики: " + getMechanicList());
+    }
+
 }
