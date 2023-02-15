@@ -91,4 +91,5 @@ public abstract class Transport<T extends Driver> implements Competing {
         System.out.println(brand+" "+model + " - водитель " + t.getT().getFIO() + ", механики: " + getMechanicList());
     }
 
+
 }
