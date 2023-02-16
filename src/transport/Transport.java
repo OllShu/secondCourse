@@ -71,6 +71,11 @@ public abstract class Transport<T extends Driver> implements Competing {
     public void printType(){
        }
 
+    @Override
+    public String toString() {
+        return brand+" "+model;
+    }
+
     public void passDiagnostics() {
         if (isNotBus()) {
             System.out.println("Транспорт проходит диагностику");

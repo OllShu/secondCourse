@@ -1,30 +1,46 @@
 package transport;
 import transport.Transport.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        DriverWithLicenseB[] driverWithLicenseBS = new DriverWithLicenseB[4];
-        driverWithLicenseBS[0] = new DriverWithLicenseB("Ковалев АА", true, 6, true);
-        driverWithLicenseBS[1] = new DriverWithLicenseB("Киселев ББ", true, 7, true);
-        driverWithLicenseBS[2] = new DriverWithLicenseB("Кучков ВВ", true, 8, true);
-        driverWithLicenseBS[3] = new DriverWithLicenseB("Кузнецов РР", true, 9, true);
 
-        DriverWithLicenseD[] driverWithLicenseDS = new DriverWithLicenseD[4];
-        driverWithLicenseDS[0] = new DriverWithLicenseD("Веселов АА", true, 15, true);
-        driverWithLicenseDS[1] = new DriverWithLicenseD("Войков ББ", true, 16, true);
-        driverWithLicenseDS[2] = new DriverWithLicenseD("Викентьев КК", true, 17, true);
-        driverWithLicenseDS[3] = new DriverWithLicenseD("Воробьев СС", true, 18, true);
+        DriverWithLicenseB driverB1 = new DriverWithLicenseB("Ковалев АА", true, 6, true);
+        DriverWithLicenseB driverB2 = new DriverWithLicenseB("Киселев ББ", true, 7, true);
+        DriverWithLicenseB driverB3 = new DriverWithLicenseB("Кучков ВВ", true, 8, true);
+        DriverWithLicenseB driverB4 = new DriverWithLicenseB("Кузнецов РР", true, 9, true);
 
-        DriverWithLicenseC[] driverWithLicenseCS = new DriverWithLicenseC[4];
-        driverWithLicenseCS[0] = new DriverWithLicenseC("Сидоров НН", true, 10, true);
-        driverWithLicenseCS[1] = new DriverWithLicenseC("Соколов ММ", true, 11, true);
-        driverWithLicenseCS[2] = new DriverWithLicenseC("Соседов ПП", true, 12, true);
-        driverWithLicenseCS[3] = new DriverWithLicenseC("Сачков СС", true, 13, true);
+        DriverWithLicenseB[] driverWithLicenseBS = new DriverWithLicenseB[] {driverB1, driverB2, driverB3, driverB4};
+
+        DriverWithLicenseD driverD1 = new DriverWithLicenseD("Веселов АА", true, 15, true);
+        DriverWithLicenseD driverD2 = new DriverWithLicenseD("Войков ББ", true, 16, true);
+        DriverWithLicenseD driverD3 = new DriverWithLicenseD("Викентьев КК", true, 17, true);
+        DriverWithLicenseD driverD4 = new DriverWithLicenseD("Воробьев СС", true, 18, true);
+
+        DriverWithLicenseD[] driverWithLicenseDS = new DriverWithLicenseD[] {driverD1, driverD2, driverD3, driverD4};
+
+        DriverWithLicenseC driverC1 = new DriverWithLicenseC("Сидоров НН", true, 10, true);
+        DriverWithLicenseC driverC2 = new DriverWithLicenseC("Соколов ММ", true, 11, true);
+        DriverWithLicenseC driverC3 = new DriverWithLicenseC("Соседов ПП", true, 12, true);
+        DriverWithLicenseC driverC4 = new DriverWithLicenseC("Сачков СС", true, 13, true);
+
+        DriverWithLicenseC[] driverWithLicenseCS = new DriverWithLicenseC[] {driverC1, driverC2, driverC3, driverC4};
+
+        Set <Driver> hashSet = new HashSet<>();
+        hashSet.add(driverB1);
+        hashSet.add(driverB2);
+        hashSet.add(driverB3);
+        hashSet.add(driverB4);
+        hashSet.add(driverD1);
+        hashSet.add(driverD2);
+        hashSet.add(driverD3);
+        hashSet.add(driverD4);
+        hashSet.add(driverC1);
+        hashSet.add(driverC2);
+        hashSet.add(driverC3);
+        hashSet.add(driverC4);
 
         Mechanic mechanic1 = new Mechanic("Дмитрий Волков", "Альфа");
         Mechanic mechanic2 = new Mechanic("Степан Мосин", "Зет");
@@ -72,7 +88,6 @@ public class Main {
     //        transport.findDriverAndMechanics(transport);
         }
 
-
         Map <Transport, List<Mechanic>> hashMap = new HashMap<>();
         hashMap.put(car1, car1.getMechanicList());
         hashMap.put(car2, car2.getMechanicList());
@@ -87,7 +102,18 @@ public class Main {
         hashMap.put(truck3, truck3.getMechanicList());
         hashMap.put(truck4, truck4.getMechanicList());
 
-        System.out.println(hashMap);
+    //    System.out.println(hashMap);
+        for (Map.Entry<Transport, List<Mechanic>> entry: hashMap.entrySet()) {
+            System.out.println("Авто "+entry.getKey()+" обслуживают механики - "+entry.getValue());
+        }
+
+    //    System.out.println(hashSet);
+        Iterator<Driver> iterator = hashSet.iterator();
+        while (iterator.hasNext()) {
+            Driver driver = iterator.next();
+            System.out.println(driver);
+        }
+
     }
 
     public static void outputInfo(String name, String brand, String model) {
