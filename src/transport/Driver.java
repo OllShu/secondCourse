@@ -1,6 +1,8 @@
 package transport;
 import transport.Utility.*;
 
+import java.util.Objects;
+
 public class Driver {
     private String FIO;
     private boolean driverLicense;
@@ -41,6 +43,19 @@ public class Driver {
     @Override
     public String toString() {
         return FIO;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver driver = (Driver) o;
+        return driverLicense == driver.driverLicense && experience == driver.experience && Objects.equals(FIO, driver.FIO);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(FIO, driverLicense, experience);
     }
 
     public void startMovingDriver() {

@@ -3,10 +3,7 @@ package transport;
 import transport.Utility.*;
 import transport.Driver.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
@@ -74,6 +71,19 @@ public abstract class Transport<T extends Driver> implements Competing {
     @Override
     public String toString() {
         return brand+" "+model;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transport)) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Double.compare(transport.getEngineVolume(), getEngineVolume()) == 0 && getBrand().equals(transport.getBrand()) && getModel().equals(transport.getModel()) && getT().equals(transport.getT()) && getMechanicList().equals(transport.getMechanicList());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getBrand(), getModel(), getEngineVolume(), getT(), getMechanicList());
     }
 
     public void passDiagnostics() {
