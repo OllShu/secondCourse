@@ -16,7 +16,7 @@ public class Main {
                 thenComparing(Statement::getStudentName);
         findMinMax(statementStream, statementComparator, minMaxConsumer);
 
-    //  вторая задача
+    //  вторая задача по стримам
 
     ArrayList<Integer> listNumbers = new ArrayList<>();
             for (int i = 0; i < 5; i++) {
