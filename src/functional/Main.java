@@ -1,21 +1,83 @@
 package functional;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> integerList = Arrays.asList(
-            getNumber(),
-            getNumber(),
-            getNumber(),
-            getNumber()
+
+        Statement[] statements = new Statement[] {new Statement("Иванов Семен", 10),
+                                            new Statement("Петров Иван", 11),
+                                            new Statement("Соколов Федор", 6)};
+        Stream<Statement> statementStream = Arrays.stream(statements);
+        BiConsumer <Statement, Statement> minMaxConsumer = (min, max) -> System.out.println("больше всего долгов у "+min.toString()+
+                ", меньше всего долгов у "+max.toString());
+        Comparator<Statement> statementComparator = Comparator.comparing(Statement::getCreditedWorks).
+                thenComparing(Statement::getStudentName);
+        findMinMax(statementStream, statementComparator, minMaxConsumer);
+
+    //  вторая задача
+
+    ArrayList<Integer> listNumbers = new ArrayList<>();
+            for (int i = 0; i < 5; i++) {
+                listNumbers.add(getNumber());
+            }
+        System.out.println(listNumbers);
+        findNumberOfEvenNumbers(listNumbers);
+    }
+    public static void findNumberOfEvenNumbers (ArrayList<Integer> arrayList) {     // метод ко второй задаче
+       arrayList.stream().filter(x -> x % 2==0)
+               .forEach(System.out::println);
+
+    /*    public static void findNumberOfEvenNumbers (ArrayList arrayList) {     //первый вариант
+            Stream stream = arrayList.stream();
+            Predicate <Integer> predicate = x -> x % 2==0;
+            stream.filter(predicate)
+                    .forEach(s-> System.out.println(s));
+
+     */
+
+    }
+
+    public static int getNumber() {
+
+        Random random = new Random();
+        return random.nextInt();
+    }
+
+    public static <T> void findMinMax(Stream <? extends T> stream,      // метод к первой задаче
+                                      Comparator <? super T> order,
+                                      BiConsumer <? super T, ? super T> minMaxConsumer){
+        List<T> list = stream.collect(Collectors.toList());
+        if (list.isEmpty()) {
+            minMaxConsumer.accept(null, null);
+        } else {
+            list.sort(order);
+            minMaxConsumer.accept(list.get(0), list.get(list.size()-1) );
+        }
+    }
+
+    /*     дубль, который не получился
+    public static <T> void findMinMax(Stream <? extends T> stream,
+                                      Comparator <? super T> order,
+                                      BiConsumer <? super T, ? super T> minMaxConsumer){
+    Optional<? extends T> opt = stream.findFirst();
+        if (opt==Optional.empty()) {
+        minMaxConsumer.accept(null, null);
+    } else {
+       minMaxConsumer.accept(stream.min(order::compare).get(),stream.max(order::compare).get());
+
+     */
+
+
+
+/*        List<Integer> integerList = Arrays.asList(
+                getNumber(),
+                getNumber(),
+                getNumber(),
+                getNumber()
         );
-        
+
         Predicate<Integer> PositiveNumberPredicate = new Predicate<Integer>() {
             @Override
             public boolean test(Integer integer) {
@@ -24,8 +86,8 @@ public class Main {
             }
         };
         Predicate<Integer> PositiveNumberPredicate1 = x -> x>0;
-        
-            System.out.println(integerList);
+
+        System.out.println(integerList);
         for (Integer integer: integerList) {
             System.out.println(PositiveNumberPredicate.test(integer));
             System.out.println(PositiveNumberPredicate1.test(integer));
@@ -57,7 +119,7 @@ public class Main {
         Function<Double, Long> RoundingFunction1 = aDouble -> Math.round(aDouble);
 
         System.out.println(number+" округляем до "+RoundingFunction.apply(number));
-         System.out.println(number+" округляем до "+RoundingFunction1.apply(number));
+        System.out.println(number+" округляем до "+RoundingFunction1.apply(number));
 
         Supplier<Integer> NumberGeneratorSupplier = new Supplier<Integer>() {
             @Override
@@ -77,6 +139,8 @@ public class Main {
         Random random = new Random();
         return random.nextInt();
     }
+
+ */
 }
 
 
